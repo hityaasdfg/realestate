@@ -1,0 +1,40 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+  <h1 id="head">
+   <a href="/"> <img src="{% static 'img/adminlogo.png' %}" alt="Real Estate" height="50" width="80" class="brand_img"></a>&nbsp;	&nbsp;	Apna House Admin Area
+  </h1>
+{% endblock %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+  <style>
+  		 body {
+        font-family: 'Big Shoulders Display', cursive;
+       background-color: #faf8f5;
+       background: url("/static/img/master.png") 50% 0 no-repeat fixed;
+       background-position: right;
+	   background-attachment: fixed;
+      background-size: 400px 400px;
+      }
+
+  	#branding h1{
+  		color: white;
+  	}
+  	div.breadcrumbs {
+   		background-color: #808080;
+
+  	}
+  	#header{
+  		background-color: #808080;
+  		color: white;
+
+  	}
+
+  		.module h2, .module caption, .inline-group h2 {
+  		background-color: #808080;
+  		font-size: 20px;
+  	}
+
+  </style>
+{% endblock %}

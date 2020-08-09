@@ -1,0 +1,70 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+ <div class="form-group" role="alert">
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+        
+            <div class="alert alert-success alert-dismissable">{{ message }}</div>
+                     
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+      
+
+<div class="signup-form">
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <h2>Login</h2>
+        <p class="hint-text">Please enter your details to login.</p>
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="User Name" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+           <button type="submit" class="btn btn-dark btn-lg btn-block">Login Now</button>
+        </div>
+    </form>
+    <center>
+    <div class="text-dark" class="text-center">Create New <a href="{% url 'signup' %}" style="color:#111112;">Signup</a></div>
+    <small>
+          <a href="{% url 'password_reset' %}" class="text-muted">Forgot your password?</a>
+          <a href="{% url 'password_change' %}" class="text-muted">change your password?</a>
+        </small>
+    </center>   
+</div>
+<script>
+    
+
+    window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 4000);
+  </script>
+
+
+{% endblock body %}

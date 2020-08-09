@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block body %}
+
+  
+<br>
+<br>
+<br>
+<br>
+ <!-- index.html -->
+   
+ <section class="probootstrap-section">
+      <div class="container">
+        <div class="form-group" role="alert">
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+        
+            <div class="alert alert-success alert-dismissable">{{ message }}</div>
+                     
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h2>ADD PROPERTY</h2>
+              <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form %}                 
+                 {% buttons %}
+                      <button type="submit" class="btn btn-primary">Add Property</button>
+                  {% endbuttons %}
+              </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <script>
+    
+
+    window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 4000);
+  </script>
+  
+
+
+
+  {% endblock body %}
